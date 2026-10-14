@@ -16,7 +16,7 @@
 	<properties>
 		<java.version>26</java.version>
 		<spring-modulith.version>2.1.1</spring-modulith.version>
-		<flyway.version>13.9.0</flyway.version>
+		<flyway.version>13.10.0</flyway.version>
 	</properties>
 	<dependencies>
 		<dependency>
