@@ -19,7 +19,7 @@ This is the core business logic layer. It receives authenticated requests from t
 - **From the BFF** — Connect protocol requests with a Bearer token forwarded by Cloudflare Workers
 - **From mobile/desktop clients** — direct HTTPS requests with a Bearer token from Auth0
 
-Connect protocol is served by [`connectrpc-spring-boot-starter`](https://github.com/neilpmas/connectrpc-spring-boot), a Maven Central library — no hand-rolled endpoint code lives in this repo. It auto-configures a `/connect/{service}/{method}` endpoint directly from the existing gRPC service definitions (`TemplateGrpcService`), so adding a new RPC only means adding it to the `.proto` file and implementing the gRPC service as normal. gRPC-Web was the original plan here but never actually worked — it's a different wire format from native gRPC, not gRPC-over-HTTP/1.1, so it was never compatible with this backend's plain gRPC service. Full rationale in [avotoast-planning](https://github.com/neilpmas/avotoast-planning#bff--spring-boot).
+Connect protocol is served by [`connectrpc-spring-boot-starter`](https://github.com/neilpmas/connectrpc-spring-boot), a Maven Central library — no hand-rolled endpoint code lives in this repo. It auto-configures a `/connect/{service}/{method}` endpoint directly from the existing gRPC service definitions (`TemplateGrpcService`), so adding a new RPC only means adding it to the `.proto` file and implementing the gRPC service as normal. gRPC-Web was the original plan here but never actually worked — it's a different wire format from native gRPC, not gRPC-over-HTTP/1.1, so it was never compatible with this backend's plain gRPC service. Full rationale in [avotoast](https://github.com/neilpmas/avotoast#bff--spring-boot).
 
 ## Architecture
 
@@ -185,4 +185,4 @@ Flyway migrations run as part of the Spring Boot startup on each deploy. If a mi
 
 ## Part of
 
-See [avotoast-planning](https://github.com/neilpmas/avotoast-planning) for the full stack overview, architecture decisions, Auth0 setup, and project workflow.
+See [avotoast](https://github.com/neilpmas/avotoast) for the full stack overview, architecture decisions, Auth0 setup, and project workflow.
