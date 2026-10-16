@@ -1,6 +1,21 @@
-# Template Application — Backend
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/neilpmas/avotoast/main/brand/wordmark-dark.png">
+    <img src="https://raw.githubusercontent.com/neilpmas/avotoast/main/brand/wordmark-light.png" alt="Avotoast" width="420">
+  </picture>
+</p>
 
-Spring Boot backend for the template application stack.
+<p align="center"><b>Backend</b><br>
+Full-stack, toasted my way.</p>
+
+<p align="center">
+  <a href="https://github.com/neilpmas/avotoast">avotoast</a> ·
+  <a href="https://github.com/neilpmas/avotoast-frontend">frontend</a> ·
+  <a href="https://github.com/neilpmas/avotoast-backend">backend</a> ·
+  <a href="https://github.com/neilpmas/bezzie">bezzie (auth)</a>
+</p>
+
+Spring Boot backend for the [Avotoast](https://github.com/neilpmas/avotoast) stack.
 
 ## What you get out of the box
 
@@ -9,7 +24,7 @@ Spring Boot backend for the template application stack.
 - Connect protocol endpoint — accepts calls from the BFF (Cloudflare Workers), via [`connectrpc-spring-boot-starter`](https://github.com/neilpmas/connectrpc-spring-boot)
 - R2DBC + Flyway — reactive database access, schema migrations run automatically on deploy
 - Testcontainers integration tests — real Postgres, no mocks, minimal boilerplate
-- GitHub Actions CI — build, test, deploy to Fly.io on merge to main
+- GitHub Actions CI — build and test (`./mvnw verify`) on every PR. The template has no deploy step; add one in your own app (see [Starting a New App](https://github.com/neilpmas/avotoast#starting-a-new-app))
 - Dependabot — weekly dependency updates, auto-merged for patch/minor
 
 ## Overview
@@ -25,7 +40,7 @@ Connect protocol is served by [`connectrpc-spring-boot-starter`](https://github.
 
 ```mermaid
 C4Container
-    title Template Application Backend — Container Diagram
+    title Avotoast Backend — Container Diagram
 
     Container(bff, "Cloudflare Workers (BFF)", "Cloudflare Workers", "External — proxies web requests")
     Container(mobile, "Mobile / Desktop clients", "React Native, etc.", "External — call the backend directly")
@@ -169,7 +184,7 @@ fly deploy
 
 ### Subsequent deploys
 
-Push to `main` — GitHub Actions deploys automatically via `flyctl`.
+The template ships no deploy workflow, since the template itself is never deployed. Deploy manually with `fly deploy`, or add a deploy-on-merge workflow to your app's repo (see [Starting a New App](https://github.com/neilpmas/avotoast#starting-a-new-app)).
 
 Flyway migrations run as part of the Spring Boot startup on each deploy. If a migration fails, the deploy fails and the old version keeps running.
 
