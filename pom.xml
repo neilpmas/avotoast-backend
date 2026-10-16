@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.template</groupId>
-	<artifactId>template-application</artifactId>
+	<artifactId>avotoast-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>template-application</name>
+	<name>avotoast-backend</name>
 	<description>Template application backend</description>
 	<properties>
 		<java.version>26</java.version>

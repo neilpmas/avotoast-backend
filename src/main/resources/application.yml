@@ -1,6 +1,6 @@
 spring:
   application:
-    name: template-application
+    name: avotoast-backend
   datasource:
     # JDBC, used only by Flyway for migrations -- the application itself talks R2DBC below.
     # See FlywayConfig for why this has to be wired up by hand.
