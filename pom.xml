@@ -17,6 +17,9 @@
 		<java.version>26</java.version>
 		<spring-modulith.version>2.1.1</spring-modulith.version>
 		<flyway.version>13.10.0</flyway.version>
+		<!-- Shared by dependencyManagement (so Dependabot sees it) and the protobuf plugin's
+		     binary-maven config, which Dependabot can't update on its own. -->
+		<protoc-gen-grpc-java.version>1.84.2</protoc-gen-grpc-java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -135,7 +138,7 @@
 			<dependency>
 				<groupId>io.grpc</groupId>
 				<artifactId>protoc-gen-grpc-java</artifactId>
-				<version>1.84.2</version>
+				<version>${protoc-gen-grpc-java.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -159,7 +162,7 @@
 						<plugin kind="binary-maven">
 							<groupId>io.grpc</groupId>
 							<artifactId>protoc-gen-grpc-java</artifactId>
-							<version>1.84.0</version>
+							<version>${protoc-gen-grpc-java.version}</version>
 						</plugin>
 					</plugins>
 				</configuration>
