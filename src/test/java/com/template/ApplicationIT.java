@@ -1,5 +1,6 @@
 package com.template;
 
+import io.sentry.Sentry;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
@@ -98,5 +99,14 @@ class ApplicationIT {
                     .isTrue();
             }
         }
+    }
+
+    /**
+     * Sentry ships on the classpath but must stay inert until a DSN is configured: an unset
+     * {@code SENTRY_DSN} is a no-op, not a startup failure and not a silent network call.
+     */
+    @Test
+    void sentryIsInertWithoutADsn() {
+        assertThat(Sentry.isEnabled()).isFalse();
     }
 }

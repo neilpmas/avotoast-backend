@@ -204,6 +204,7 @@ Flyway migrations run as part of the Spring Boot startup on each deploy. If a mi
 | `DATABASE_URL` | Neon direct JDBC URL (port 5432) — used by Flyway |
 | `R2DBC_URL` | Neon direct R2DBC URL (port 5432) — used by the app |
 | `APP_ENVIRONMENT` | `local`, `production` |
+| `SENTRY_DSN` | Optional. Sentry project DSN for error tracking; unset is a documented no-op |
 
 ## Part of
 

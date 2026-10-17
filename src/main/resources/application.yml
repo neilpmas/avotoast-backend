@@ -45,6 +45,19 @@ logging:
     format:
       console: ecs
 
+sentry:
+  # Empty DSN is the SDK's own documented no-op state -- it logs a debug line and
+  # sends nothing, rather than failing to start. Safe to leave unset until a
+  # Sentry project actually exists; no code change needed to turn it on later.
+  dsn: ${SENTRY_DSN:}
+  environment: ${APP_ENVIRONMENT:local}
+  # Error tracking only -- no performance/tracing spans, to stay well within a
+  # free-tier event quota. Revisit if latency tracing becomes useful.
+  traces-sample-rate: 0.0
+  # Request bodies and headers can carry user data -- don't forward that to a
+  # third party by default.
+  send-default-pii: false
+
 app:
   environment: ${APP_ENVIRONMENT:local}
   migrations:
