@@ -1,12 +1,16 @@
 spring:
   datasource:
-    # Local Docker Postgres — used by Flyway only
+    # Local Docker Postgres (`docker compose up -d`) — used by Flyway only
     url: jdbc:postgresql://localhost:5432/template
+    username: postgres
+    password: password
   r2dbc:
     # Local Docker Postgres — used by the app
     # In production (Neon): use the DIRECT connection string (port 5432), NOT the pooler URL.
     # The transaction-mode pooler breaks R2DBC prepared statements.
     url: r2dbc:postgresql://localhost:5432/template
+    username: postgres
+    password: password
 
 AUTH0_ISSUER_URI: https://your-tenant.auth0.com/
 AUTH0_AUDIENCE: https://api.yourproject.com
