@@ -26,3 +26,11 @@ target/
 /.nb-gradle/
 build/
 !**/src/main/resources/architecture.html
+
+### Local secrets ###
+.env
+.env.*
+!.env.example
+application-local.yml
+application-local.yaml
+application-local.properties

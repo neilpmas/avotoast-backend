@@ -100,7 +100,7 @@ Roles and permissions are defined in Auth0 and included in the JWT as a `permiss
 |---|---|---|
 | Framework | Spring Boot | 4.1.1 |
 | Architecture | Spring Modulith | 2.1.1 |
-| Language | Java | 26 |
+| Language | Java | 27 |
 | Build | Maven | (wrapper included) |
 | API protocol | Connect protocol | — |
 | Database client | R2DBC (reactive) | via Spring Data R2DBC |
@@ -127,20 +127,24 @@ Flyway migrations live in `src/main/resources/db/migration/` and run automatical
 
 ### Prerequisites
 
-- Java 26
+- Java 27
 - Docker (for Testcontainers integration tests)
-- A Postgres instance (local Docker or a Neon dev branch)
+- A Postgres instance: `docker compose up -d` starts a local one (see `docker-compose.yml`), or use a Neon dev branch
 
 ### Config
 
-Copy `src/main/resources/application-local.yml.example` to `application-local.yml` (gitignored) and fill in your values:
+Copy `src/main/resources/application-local.yml.example` to `application-local.yml` (gitignored) and fill in your values. The example's database credentials match `docker-compose.yml`:
 
 ```yaml
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/template   # Flyway
+    username: postgres
+    password: password
   r2dbc:
     url: r2dbc:postgresql://localhost:5432/template  # app
+    username: postgres
+    password: password
 
 AUTH0_ISSUER_URI: https://your-tenant.auth0.com/
 AUTH0_AUDIENCE: https://api.yourproject.com
