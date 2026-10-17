@@ -89,7 +89,10 @@ Protect endpoints with standard Spring Security annotations:
 
 ```java
 @PreAuthorize("isAuthenticated()")
+public Mono<Profile> me() { ... }
+
 @PreAuthorize("hasAuthority('read:data')")
+public Flux<Item> items() { ... }
 ```
 
 Roles and permissions are defined in Auth0 and included in the JWT as a `permissions` claim. Enable **RBAC** and **Add Permissions in the Access Token** in the Auth0 API settings.
@@ -121,7 +124,7 @@ The app uses **[Neon](https://neon.tech)** — managed serverless Postgres.
 
 > **Important:** Always use the **direct connection string** (port 5432), not the Neon pooler URL (port 6543). The transaction-mode pooler breaks R2DBC prepared statements.
 
-Flyway migrations live in `src/main/resources/db/migration/` and run automatically on startup.
+Flyway migrations live in `src/main/resources/db/migration/` and run automatically on startup, but **after** the web server has bound its port, not during context refresh. `DatabaseMigrationRunner` (an `ApplicationRunner`) does the migrating, and `MigrationGateWebFilter` holds Connect requests that arrive meanwhile until it finishes (or returns a retryable 503 if it fails or times out). This matters on scale-to-zero hosting: a cold boot can take minutes on a throttled shared CPU, and a port that stays closed that long makes Fly's proxy give up and its autostop kill the machine mid-boot. `spring.flyway.connect-retries` rides out Neon waking up after the Fly machine does. The gate timeout is `app.migrations.gate-timeout`.
 
 ## Local development
 
