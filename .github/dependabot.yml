@@ -4,3 +4,8 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    # Dependabot's default is 5 open PRs per ecosystem. One PR stuck on an
+    # upstream blocker permanently holds a slot, so the effective limit shrinks
+    # and newer versions silently never get a PR. Raise it well above the
+    # number of dependencies that can plausibly be stuck at once.
+    open-pull-requests-limit: 20
