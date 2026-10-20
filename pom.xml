@@ -16,11 +16,11 @@
 	<properties>
 		<java.version>27</java.version>
 		<spring-modulith.version>2.1.1</spring-modulith.version>
-		<flyway.version>13.10.0</flyway.version>
+		<flyway.version>13.10.3</flyway.version>
 		<!-- Shared by dependencyManagement (so Dependabot sees it) and the protobuf plugin's
 		     binary-maven config, which Dependabot can't update on its own. -->
-		<protoc-gen-grpc-java.version>1.84.2</protoc-gen-grpc-java.version>
-		<sentry.version>8.60.0</sentry.version>
+		<protoc-gen-grpc-java.version>1.85.0</protoc-gen-grpc-java.version>
+		<sentry.version>8.61.0</sentry.version>
 	</properties>
 	<dependencies>
 		<dependency>
