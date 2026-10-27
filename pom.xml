@@ -20,7 +20,7 @@
 		<!-- Shared by dependencyManagement (so Dependabot sees it) and the protobuf plugin's
 		     binary-maven config, which Dependabot can't update on its own. -->
 		<protoc-gen-grpc-java.version>1.85.1</protoc-gen-grpc-java.version>
-		<sentry.version>8.61.0</sentry.version>
+		<sentry.version>8.61.1</sentry.version>
 	</properties>
 	<dependencies>
 		<dependency>
